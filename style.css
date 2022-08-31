@@ -1,0 +1,45 @@
+#titte {
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(212, 25, 25)
+}
+
+#color-palette {
+    display: flex;
+    border: 1px black solid;
+    justify-content: space-evenly;
+    height: 75px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;;
+}
+
+.color {
+    align-items: center;
+    border: 1px black solid;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding: 20px;
+    margin: 5px;
+}
+
+#black {
+    background-color: black;
+}
+
+#color2 {
+    background-color: red;
+}
+
+#color3 {
+    background-color: green;
+}
+
+#color4 {
+    background-color: blue;
+}
