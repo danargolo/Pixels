@@ -44,3 +44,20 @@ h1 {
   background-color: blue;
 }
 
+
+.container {
+  display: flex;
+  margin: auto; 
+  width: fit-content; /*fit-content = Verificar se deixa tamanho dinâmico ao mudar qnt. */
+}
+
+#pixel-board {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0;
+  width: 310px;
+  gap: 1px;
+  border: 1px black solid;
+}
+
