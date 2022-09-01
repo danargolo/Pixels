@@ -1,25 +1,21 @@
-// Referência: https://www.w3schools.com/jsref/met_win_setTimeout.asp
-window.onload = setTimeout(function selectedBlack() {
-  document.getElementById('black').classList.add('selected');
-}, 500);
-
-//
 localStorage.getItem('colorPalette');
 
 // Variáveis e Const
 const randomBtn = document.querySelector('#button-random-color');
 randomBtn.innerText = 'Cores aleatórias';
-const selectedColor = document.getElementsByClassName('selected');
 const color = document.querySelectorAll('.color');
 const pixel = document.querySelectorAll('.pixel');
 
+document.getElementById('black').classList.add('selected')
 // Função para selecionar.
 function selector(par) {
-  selectedColor[0].className = 'color';
-  par.target.classList.add('selected'); // Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
+  for (let index = 0; index < color.length; index += 1) {
+    color[index].classList.remove('selected');
+    par.target.classList.add('selected');
+  } // Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
 }
 
-// Listeners 
+// Listeners
 for (let index = 0; index < color.length; index += 1) {
   color[index].addEventListener('click', selector);
 }
@@ -44,13 +40,10 @@ function btnRandomColor() {
 }
 randomBtn.addEventListener('click', btnRandomColor);
 
-
-function colorPixel (par) {
-    par.target.style.backgroundColor = selectedColor[0].style.backgroundColor;
+function colorPixel(par) {
+  const selectedColor = document.getElementsByClassName('selected');
+  par.target.style.backgroundColor = selectedColor[0].style.backgroundColor;
 }
 for (let index = 0; index < pixel.length; index += 1) {
-    pixel[index].addEventListener('click', colorPixel);
-  }
-
-
-
+  pixel[index].addEventListener('click', colorPixel);
+}
