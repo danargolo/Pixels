@@ -1,13 +1,17 @@
 // Referência: https://www.w3schools.com/jsref/met_win_setTimeout.asp
 window.onload = setTimeout(function selectedBlack() {
   document.getElementById('black').classList.add('selected');
-}, 1000);
+}, 500);
+
+//
+localStorage.getItem('colorPalette');
 
 // Variáveis e Const
 const randomBtn = document.querySelector('#button-random-color');
 randomBtn.innerText = 'Cores aleatórias';
 const selectedColor = document.getElementsByClassName('selected');
 const color = document.querySelectorAll('.color');
+const pixel = document.querySelectorAll('.pixel');
 
 // Função para selecionar.
 function selector(par) {
@@ -40,6 +44,13 @@ function btnRandomColor() {
 }
 randomBtn.addEventListener('click', btnRandomColor);
 
-// // console.log(document.getElementById('black').classList);
-// let color = document.querySelectorAll('.color');
-// console.log(color[0].style.backgroundColor = 'black');
+
+function colorPixel (par) {
+    par.target.style.backgroundColor = selectedColor[0].style.backgroundColor;
+}
+for (let index = 0; index < pixel.length; index += 1) {
+    pixel[index].addEventListener('click', colorPixel);
+  }
+
+
+
