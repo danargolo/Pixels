@@ -1,28 +1,45 @@
 // Referência: https://www.w3schools.com/jsref/met_win_setTimeout.asp
 window.onload = setTimeout(function selectedBlack() {
-  document.getElementById('black').className = 'selected';
-}, 1500);
+  document.getElementById('black').classList.add('selected');
+}, 1000);
 
 // Variáveis e Const
+const randomBtn = document.querySelector('#button-random-color');
+randomBtn.innerText = 'Cores aleatórias';
 const selectedColor = document.getElementsByClassName('selected');
-const black = document.getElementById('black');
-const color2 = document.getElementById('color2');
-const color3 = document.getElementById('color3');
-const color4 = document.getElementById('color4');
-
+const color = document.querySelectorAll('.color');
 
 // Função para selecionar.
 function selector(par) {
   selectedColor[0].className = 'color';
-  par.target.className = 'selected'; // Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
+  par.target.classList.add('selected'); // Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
 }
 
-// Listeners
-black.addEventListener('click', selector);
-color2.addEventListener('click', selector);
-color3.addEventListener('click', selector);
-color4.addEventListener('click', selector);
+// Listeners 
+for (let index = 1; index < color.length; index += 1) {
+  color[index].addEventListener('click', selector);
+}
 
-console.log(document.getElementById('black').className);
+// // Random color - Referência Template string: https://blog.cod3r.com.br/template-strings/
+function randomColor() {
+  const red = Math.floor(Math.random() * 255);
+  const green = Math.floor(Math.random() * 255);
+  const blue = Math.floor(Math.random() * 255);
 
-console.log(document.getElementById('black').style.backgroundColor);
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+color[0].style.backgroundColor = 'rgb(0, 0, 0)';
+for (let index = 1; index < color.length; index += 1) {
+  color[index].style.backgroundColor = randomColor();
+}
+
+function btnRandomColor() {
+  for (let index = 1; index < color.length; index += 1) {
+    color[index].style.backgroundColor = randomColor();
+  }
+}
+randomBtn.addEventListener('click', btnRandomColor);
+
+// // console.log(document.getElementById('black').classList);
+// let color = document.querySelectorAll('.color');
+// console.log(color[0].style.backgroundColor = 'black');
