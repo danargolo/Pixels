@@ -16,7 +16,7 @@ function selector(par) {
 }
 
 // Listeners 
-for (let index = 1; index < color.length; index += 1) {
+for (let index = 0; index < color.length; index += 1) {
   color[index].addEventListener('click', selector);
 }
 
