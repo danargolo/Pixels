@@ -1,8 +1,7 @@
 localStorage.getItem('colorPalette');
 
 // Variáveis e Const
-const randomBtn = document.querySelector('#button-random-color');
-randomBtn.innerText = 'Cores aleatórias';
+
 const color = document.querySelectorAll('.color');
 const pixel = document.querySelectorAll('.pixel');
 
@@ -33,6 +32,9 @@ for (let index = 1; index < color.length; index += 1) {
   color[index].style.backgroundColor = randomColor();
 }
 
+const randomBtn = document.querySelector('#button-random-color');
+randomBtn.innerText = 'Cores aleatórias';
+
 function btnRandomColor() {
   for (let index = 1; index < color.length; index += 1) {
     color[index].style.backgroundColor = randomColor();
@@ -47,3 +49,13 @@ function colorPixel(par) {
 for (let index = 0; index < pixel.length; index += 1) {
   pixel[index].addEventListener('click', colorPixel);
 }
+
+const clearBtn = document.querySelector('#clear-board')
+clearBtn.innerText = 'Limpar;'
+
+function clear() {
+  for (let index = 0; index < pixel.length; index += 1) {
+    pixel[index].style.backgroundColor = 'white';
+  }
+}
+clearBtn.addEventListener('click', clear);
