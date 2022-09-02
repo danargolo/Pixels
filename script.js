@@ -1,22 +1,35 @@
 const color = document.querySelectorAll('.color');
 const pixel = document.querySelectorAll('.pixel');
 const load = JSON.parse(localStorage.getItem('colorPalette'));
+const pos = JSON.parse(localStorage.getItem('pixelBoard'));
 
-document.getElementById('black').classList.add('selected')
+document.getElementById('black').classList.add('selected');
 
-if (localStorage.colorPalette) {
-  window.onload = function loadColor () {
+
+function loadColor() {
+  if (localStorage.colorPalette) {
     for (let index = 0; index < color.length; index += 1) {
       color[index].style.backgroundColor = load[index];
     }
-  }
+  };
 }
+window.addEventListener('load',loadColor);
+
+function continuePaint() {
+  if (localStorage.pixelBoard) {
+  for (let index = 0; index < pixel.length; index += 1) {
+      pixel[index].style.backgroundColor = pos[index];
+    }
+  };
+}
+window.addEventListener('load',continuePaint);
+
 // Função para selecionar. Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
 function selector(par) {
   for (let index = 0; index < color.length; index += 1) {
     color[index].classList.remove('selected');
     par.target.classList.add('selected');
-  } 
+  }
 }
 
 // Listeners
@@ -40,9 +53,8 @@ for (let index = 1; index < color.length; index += 1) {
 const randomBtn = document.querySelector('#button-random-color');
 randomBtn.innerText = 'Cores aleatórias';
 
-
 function btnRandomColor() {
-  let palette = [];
+  const palette = [];
   for (let index = 0; index < color.length; index += 1) {
     if (index > 0) {
       color[index].style.backgroundColor = randomColor();
@@ -54,12 +66,16 @@ function btnRandomColor() {
 }
 randomBtn.addEventListener('click', btnRandomColor);
 
-
-
 function colorPixel(param) {
   const selectedColor = document.querySelector('.selected');
   param.target.style.backgroundColor = selectedColor.style.backgroundColor;
+  const colorPos = [];
+  for (let index = 0; index < pixel.length; index += 1) {
+    colorPos.push(pixel[index].style.backgroundColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(colorPos));
 }
+
 for (let index = 0; index < pixel.length; index += 1) {
   pixel[index].addEventListener('click', colorPixel);
 }
@@ -73,13 +89,3 @@ function clear() {
   }
 }
 clearBtn.addEventListener('click', clear);
-
-
-// const palette = []
-//   for(let index = 0; index < color.length; index += 1) {
-//     palette.push(color[index].style.backgroundColor);
-//   }
-
-    // localStorage.clear();
-    // window.localStorage.setItem('colorPalette', JSON.stringify(color[index].style.backgroundColor));
-    // console.log(color[index]);
