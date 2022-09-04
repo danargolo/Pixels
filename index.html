@@ -23,35 +23,11 @@
     <div>
         <input type='button' value='Cores aleatórias' id='button-random-color'>
     </div>
-    <div class='container'>
-        <div id = 'pixel-board'>
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div> 
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>  
-            <div class='pixel'></div> 
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div> 
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>
-            <div class='pixel'></div>  
-            <div class='pixel'></div>
-            <div class='pixel'></div>  
-            <div class='pixel'></div>  
-            <div class='pixel'></div>
-            <div class='pixel'></div>  
-            <div class='pixel'></div>
-            <div class='pixel'></div>  
-            <div class='pixel'></div>
-        </div>
-    </div>  
+    <div>
+        <input type="number" id="board-size" name="size" min="1" max="50" step="1">
+        <input type='button' id='generate-board' value='VQV'>
+    </div>
+    <div id = 'pixel-board'></div>     
 </body>
 <script src='script.js'></script>
 </html>
