@@ -37,6 +37,24 @@ for (let index = 0; index < color.length; index += 1) {
   color[index].addEventListener('click', selector);
 }
 
+function colorPixel(param) {
+  const comp = param;
+  const selectedColor = document.querySelector('.selected').style.backgroundColor;
+  comp.target.style.backgroundColor = selectedColor;
+  const colorPos = [];
+  for (let index = 0; index < pixel.length; index += 1) {
+    colorPos.push(pixel[index].style.backgroundColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(colorPos));
+}
+
+function clickColor() {
+  for (let index = 0; index < pixel.length; index += 1) {
+    pixel[index].addEventListener('click', colorPixel);
+  }
+}
+clickColor();
+
 // Boards
 
 const userSelect = document.getElementById('board-size');
@@ -68,13 +86,12 @@ function loadBoard() {
     createPixel(5);
   }
 }
-window.addEventListener('load', loadBoard());
+loadBoard();
 
 function ruler(par) {
-  if (par > 0) {
-    if (par < 5) { userSelect.value = 5; }
-    if (par > 50) { userSelect.value = 50; }
-  } else { alert('Board inválido!'); }
+  if (par === '') { alert('Board inválido!'); }
+  if (par < 5) { userSelect.value = 5; }
+  if (par > 50) { userSelect.value = 50; }
 }
 
 function boardSize() {
@@ -118,23 +135,6 @@ function btnRandomColor() {
 }
 
 randomBtn.addEventListener('click', btnRandomColor);
-
-function colorPixel(param) {
-  const selectedColor = document.querySelector('.selected').style.backgroundColor;
-  param.target.style.backgroundColor = selectedColor;
-  const colorPos = [];
-  for (let index = 0; index < pixel.length; index += 1) {
-    colorPos.push(pixel[index].style.backgroundColor);
-  }
-  localStorage.setItem('pixelBoard', JSON.stringify(colorPos));
-}
-
-function clickColor() {
-  for (let index = 0; index < pixel.length; index += 1) {
-    pixel[index].addEventListener('click', colorPixel);
-  }
-}
-clickColor();
 
 const clearBtn = document.querySelector('#clear-board');
 clearBtn.innerText = 'Limpar';
