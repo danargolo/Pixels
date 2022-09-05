@@ -40,7 +40,6 @@ for (let index = 0; index < color.length; index += 1) {
 // Boards
 
 const userSelect = document.getElementById('board-size');
-userSelect.value = 5;
 
 function removePixel() {
   for (let index = pixel.length - 1; index >= 0; index -= 1) {
@@ -75,7 +74,7 @@ function ruler(par) {
   if (par > 0) {
     if (par < 5) { userSelect.value = 5; }
     if (par > 50) { userSelect.value = 50; }
-  } else { alert('Board inválido!'), userSelect.value = 5; }
+  } else { alert('Board inválido!'); }
 }
 
 function boardSize() {
