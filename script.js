@@ -1,6 +1,5 @@
 const color = document.querySelectorAll('.color');
 const pixel = document.getElementsByClassName('pixel');
-const board = document.getElementById('pixel-board');
 
 document.getElementById('black').classList.add('selected');
 
@@ -26,8 +25,6 @@ function continuePaint() {
 
 window.addEventListener('load', continuePaint);
 
-
-
 // Função para selecionar. Target - Referência: https://developer.mozilla.org/pt-BR/docs/Web/API/Event/target
 function selector(param) {
   for (let index = 0; index < color.length; index += 1) {
@@ -45,40 +42,52 @@ for (let index = 0; index < color.length; index += 1) {
 const userSelect = document.getElementById('board-size');
 userSelect.value = 5;
 
-
 function removePixel() {
   for (let index = pixel.length - 1; index >= 0; index -= 1) {
     pixel[index].remove();
   }
 }
 
-
 function createPixel(a) {
-  removePixel();    
-    for (index = 0; index < a ** 2; index += 1) {
-      let size = document.createElement('div');
-      document.getElementById('pixel-board').appendChild(size);
-      size.className = 'pixel';
-      size.style.backgroundColor = "white";
-      document.getElementById('pixel-board').style.width = `${(a * 60)}px`;
-    }
+  removePixel();
+  for (let index = 0; index < a ** 2; index += 1) {
+    const size = document.createElement('div');
+    document.getElementById('pixel-board').appendChild(size);
+    size.className = 'pixel';
+    size.style.backgroundColor = 'white';
+    document.getElementById('pixel-board').style.width = `${(a * 60)}px`;
+  }
   clickColor();
-  localStorage.setItem('boardSize', JSON.stringify(pixel));
-  return;
 }
-// createPixel(5);
+
+const size = JSON.parse(localStorage.getItem('boardSize'));
+function loadBoard() {
+  if (localStorage.boardSize) {
+    createPixel(size);
+  } else {
+    createPixel(5);
+  }
+}
+window.addEventListener('load', loadBoard());
+
+function ruler(par) {
+  if (par > 1) {
+    if (par < 5) { userSelect.value = 5; }
+    if (par > 50) { userSelect.value = 50; }
+  } else { return alert('Board inválido!'); }
+}
+
+function boardSize() {
+  localStorage.setItem('boardSize', JSON.stringify(userSelect.value));
+}
 
 const boardBtn = document.getElementById('generate-board');
-boardBtn.innerHTML = "VQV";
-boardBtn.addEventListener('click', (ruler) => {
-  if (userSelect.value === '') {return alert('Board inválido!'), userSelect.value = 5;}
-  if (userSelect.value < 5) {userSelect.value = 5}
-  if (userSelect.value > 50) {userSelect.value = 50}
+boardBtn.innerHTML = 'VQV';
+boardBtn.addEventListener('click', () => {
+  ruler(userSelect.value);
   createPixel(userSelect.value);
+  boardSize();
 });
-
-
-
 
 // Random color - Referência Template string: https://blog.cod3r.com.br/template-strings/
 function randomColor() {
@@ -128,6 +137,7 @@ clickColor();
 
 const clearBtn = document.querySelector('#clear-board');
 clearBtn.innerText = 'Limpar';
+
 function clear() {
   for (let index = 0; index < pixel.length; index += 1) {
     pixel[index].style.backgroundColor = 'white';
@@ -136,15 +146,3 @@ function clear() {
   }
 }
 clearBtn.addEventListener('click', clear);
-
-const size = JSON.parse(localStorage.getItem('boardSize'));
-function loadBoard() {
-  if (localStorage.boardSize) {
-    for (let index = 0; index < pixel.length; index += 1) {
-      pixel[index] = size[index];}
-  } 
-  else {
-    createPixel(5);
-  }
-}
-window.addEventListener('load', loadBoard);
