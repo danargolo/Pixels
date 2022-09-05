@@ -1,4 +1,3 @@
-
 #titte {
   justify-content: center;
 }
@@ -11,6 +10,8 @@ h1 {
 #color-palette {
   display: flex;
   border: 1px black solid;
+  border-radius: 15px;
+  background-color: rgb(215, 213, 218);
   justify-content: space-evenly;
   height: 75px;
   width: 400px;
@@ -38,24 +39,20 @@ h1 {
   margin: 5px;
 }
 
-
-
 #pixel-board {
-
-  justify-content: center;
-  margin: 0;
-  width: 300px;
-  border: 1px black solid;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pixel {
   display: inline-block;
   margin: 0;
-  padding: 5px;
   width: 40px;
   height: 40px;
   background-color: white;
   border: 1px black solid;
 }
-
-#button-random-color

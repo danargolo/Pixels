@@ -72,7 +72,8 @@ function createPixel(a) {
     document.getElementById('pixel-board').appendChild(size);
     size.className = 'pixel';
     size.style.backgroundColor = 'white';
-    document.getElementById('pixel-board').style.width = `${(a * 60)}px`;
+    document.getElementById('pixel-board').style.width = `${(a * 44)}px`; // 46.25
+    document.getElementById('pixel-board').style.height = `${(a * 44)}px`;
   }
   clickColor();
 }
