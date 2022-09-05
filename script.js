@@ -63,6 +63,7 @@ function createPixel(a) {
 const size = JSON.parse(localStorage.getItem('boardSize'));
 function loadBoard() {
   if (localStorage.boardSize) {
+    userSelect.value = size;
     createPixel(size);
   } else {
     createPixel(5);
@@ -71,10 +72,10 @@ function loadBoard() {
 window.addEventListener('load', loadBoard());
 
 function ruler(par) {
-  if (par > 1) {
+  if (par > 0) {
     if (par < 5) { userSelect.value = 5; }
     if (par > 50) { userSelect.value = 50; }
-  } else { return alert('Board inválido!'); }
+  } else { alert('Board inválido!'), userSelect.value = 5; }
 }
 
 function boardSize() {
@@ -84,6 +85,7 @@ function boardSize() {
 const boardBtn = document.getElementById('generate-board');
 boardBtn.innerHTML = 'VQV';
 boardBtn.addEventListener('click', () => {
+  localStorage.clear('pixelBoard');
   ruler(userSelect.value);
   createPixel(userSelect.value);
   boardSize();
