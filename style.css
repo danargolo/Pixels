@@ -1,23 +1,49 @@
-#titte {
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap') ;
+
+#title {
   justify-content: center;
 }
 
+
+body {
+  background-color: rgb(144, 174, 238);
+}
+
 h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 7px 5px 10px black;
   text-align: center;
-  color: rgb(212, 25, 25);
+  font-size: 40px;
+  color: rgb(223, 235, 116);
+}
+
+input {
+  background-color: rgb(151, 151, 236);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  border-radius: 7px;
+  padding: 5px;
+  box-shadow: 5px 3px 4px black;
+  cursor: pointer;
+}
+
+#board-size {
+  background-color: rgb(185, 185, 241);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 7px;
+  text-align: center;
+  box-shadow: 2px 3px 4px black;
+
 }
 
 #color-palette {
   display: flex;
-  border: 1px black solid;
-  border-radius: 15px;
-  background-color: rgb(215, 213, 218);
   justify-content: space-evenly;
   height: 75px;
   width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+  margin: 35px auto 130px;
 }
 
 .color {
@@ -26,8 +52,10 @@ h1 {
   border-radius: 100%;
   width: 20px;
   height: 20px;
-  padding: 20px;
+  padding: 17px;
   margin: 5px;
+  cursor: grab;
+  box-shadow: 3px 4px 6px rgb(48, 46, 46);
 }
 
 .selected {
@@ -55,4 +83,28 @@ h1 {
   height: 40px;
   background-color: white;
   border: 1px black solid;
+}
+
+.btn-clear {
+  position: absolute;
+  border-radius: 10px;
+  padding: 15px;
+  top: 200px;
+  left: 65%; /* 700px */
+}
+
+.random {
+  position: absolute;
+  border-radius: 10px;
+  padding: 15px;
+  top: 200px;
+  left: 42%; /* 425px */
+}
+
+.btn-size {
+  position: absolute;
+  border-radius: 10px;
+  padding: 15px;
+  top: 200px;
+  left: 24%; /* 125px */
 }
